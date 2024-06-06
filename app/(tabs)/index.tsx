@@ -1,70 +1,75 @@
-import { Image, StyleSheet, Platform } from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import {
+  StyleSheet,
+  Text,
+  ImageBackground,
+  View,
+  SafeAreaView,
+} from "react-native";
+import { homeimage } from "../../constants/images";
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <SafeAreaView style={styles.container}>
+      <ImageBackground
+        source={homeimage}
+        resizeMode="cover"
+        style={styles.backgroundImage}
+      >
+        <View style={styles.middleView}>
+          <Text style={styles.headerText}>Aspen</Text>
+
+    <View>
+      <Text style={styles.bottomText1}>Plan your</Text>
+      <Text style={styles.bottomText2}>Luxurious</Text>
+      <Text style={styles.bottomText2}>Vacation</Text>
+    </View>
+
+        </View>
+      </ImageBackground>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  container: {
+    flex: 1,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  backgroundImage: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+
+  middleView: {
+    flex: 1,
+    justifyContent:'space-between',
+    borderWidth: 4,
+    borderColor: "red",
+    paddingTop:100,
+    paddingBottom:50,
+    width:"100%",
+    paddingHorizontal:30
   },
+
+  headerText: {
+    color: "#ffffff",
+    fontSize: 116,
+    fontFamily:"Hiatus",
+    lineHeight:126,
+    letterSpacing:8,
+    textAlign:'center'
+  },
+  bottomText1:{
+    color:'#ffffff',
+    fontFamily:'Montserrat',
+    fontSize:24,
+    lineHeight:27,
+    fontWeight:'400'
+  },
+  bottomText2:{
+    color:'#ffffff',
+    fontFamily:'Montserrat',
+    fontSize:40,
+    fontWeight:'700'
+  }
 });
